@@ -16,13 +16,21 @@ use Illuminate\Support\Facades\Route;
 
 
  Route::group(['prefix' => 'movies'], function() {
-    Route::group(['middleware' => 'auth:api'], function() {
+    if(env('APP_URL') == "http://localhost") {
+        Route::group(['middleware' => 'auth:api'], function() {
+            Route::get('{id}', 'MovieController@read')->where('id', '[0-9]+');
+            Route::get('{viewState}', 'MovieController@index');
+            Route::post('create', 'MovieController@create');
+            Route::put('update/{movie}', 'MovieController@update');
+            Route::delete('delete/{movie}', 'MovieController@delete');
+        });
+    } else {
         Route::get('{id}', 'MovieController@read')->where('id', '[0-9]+');
         Route::get('{viewState}', 'MovieController@index');
         Route::post('create', 'MovieController@create');
         Route::put('update/{movie}', 'MovieController@update');
         Route::delete('delete/{movie}', 'MovieController@delete');
-    });
+    }
 });
 
 Route::group(['prefix' => 'auth'], function () {
