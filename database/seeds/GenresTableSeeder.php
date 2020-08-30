@@ -16,7 +16,7 @@ class GenresTableSeeder extends Seeder
         Genre::truncate();
 
         
-        $genres = ClientMoviesApi::getDataFromApi('category');
+        $genres = ClientMoviesApi::getDataFromApi("genre/movie/list");
         $genres = json_decode($genres);
 
         // And now, let's create a few articles in our database:
