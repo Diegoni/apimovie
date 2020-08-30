@@ -14,6 +14,7 @@ class Movie extends Model
         'vote_count',
         'video',
         'poster_path',
+        'id',
         'movies.id',
         'adult',
         'backdrop_path',
@@ -23,19 +24,23 @@ class Movie extends Model
         'vote_average',
         'overview',
         'release_date',
+        'status',
     ];
 
     public static function createFromRequest($request)
     {
-        $genres = Genre::select('id', 'genre_id')->get()->keyBy('id');
+        $genreArray = $request['genre_ids'];
+        unset($request['genre_ids']);
         $movie = Movie::create($request);
-        foreach($request['genre_ids'] as $id){
+        
+        $genres = Genre::select('id', 'genre_id')->get()->keyBy('id');
+        foreach($genreArray as $id){
             MoviesGenres::create([
                 "movie_id" => $movie->id,
                 "genre_id" => $genres[$id]->genre_id,
             ]);
         }
-
+        
         $movieReturn = new \stdClass();
         $movieReturn->id = $movie->id;
         $movieReturn->created = true;
@@ -65,14 +70,17 @@ class Movie extends Model
         ->join('movies_genres', 'movies.movie_id', '=', 'movies_genres.movie_id')
         ->join('genres', 'movies_genres.genre_id', '=', 'genres.genre_id')
         ->groupBy('movies.movie_id');
+        
         if($viewState != null){
             $query->where('status', $viewState);
         }
+        
         $movies = $query->get();
-
+        
         foreach($movies as $movie) {
             $movie->genre_ids = array_map('intval', explode(',', $movie->genre_ids));
         }
+        
 
         return $movies;
     }
