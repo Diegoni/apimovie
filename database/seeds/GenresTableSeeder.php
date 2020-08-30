@@ -1,7 +1,7 @@
 <?php
 use App\Genre;
 use Illuminate\Database\Seeder;
-use App\Http\Controllers\ClientMoviesApi;
+use App\Http\Helpers\ClientMoviesApi;
 
 class GenresTableSeeder extends Seeder
 {
