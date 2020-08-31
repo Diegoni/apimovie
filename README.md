@@ -62,20 +62,20 @@ Para consultar las categorias de las movies lo hacemos con la siguiente
 <p>METHOD: POST</p>
 <p>JSON</p>
 
-- {
--    "popularity" : 59.00,
--     "vote_count" : 950,
--     "video" : false,
--     "poster_path" : "387374d5f22033327cfff1ba1430adfc.jpg",
--     "id" : 8009,
--     "adult" : true,
--     "backdrop_path" : "d07401fa82c073300627b86dfec9108d.jpg",
--     "original_language" : "mh",
--     "original_title" : "Court Reporter",
--     "title" : "Natus et ut deleniti harum.",
--     "vote_average" : 6.40,
--     "overview" : "Provident incidunt eaque est id provident doloribu...",
--     "status" : "now_playing",
--     "release_date" :  "1984-09-02",
--     "genre_ids" : [16,18,27]
-- }
+    {
+    "popularity" : 59.00,
+    "vote_count" : 950,
+    "video" : false,
+    "poster_path" : "387374d5f22033327cfff1ba1430adfc.jpg",
+    "id" : 8009,
+    "adult" : true,
+    "backdrop_path" : "d07401fa82c073300627b86dfec9108d.jpg",
+    "original_language" : "mh",
+    "original_title" : "Court Reporter",
+    "title" : "Natus et ut deleniti harum.",
+    "vote_average" : 6.40,
+    "overview" : "Provident incidunt eaque est id provident doloribu...",
+    "status" : "now_playing",
+    "release_date" :  "1984-09-02",
+    "genre_ids" : [16,18,27]
+    }
