@@ -9,12 +9,12 @@ Lo primero que debes hacer es crear un usuario para poder hacer las consultas, p
 <p>METHOD: POST</p>
 <p>JSON</p>
 
-- {
--	"name" : "Nieto",
--	"email" : "diego@nieto.com",
--	"password" : "123456",
--	"password_confirmation" : "123456"
-- }
+	{
+		"name" : "Nieto",
+		"email" : "diego@nieto.com",
+		"password" : "123456",
+		"password_confirmation" : "123456"
+	}
 
 Esto creara el usuario en DB.
 
@@ -26,11 +26,11 @@ Ahora vamos a loguear nuestro usario para obtener los token para hacer las consu
 <p>METHOD: POST</p>
 <p>JSON</p>
 
-- {
--	"email" : "diego@nieto.com",
--	"password" : "123456",
--	"remember_me" : true
-- }
+	{
+		"email" : "diego@nieto.com",
+		"password" : "123456",
+		"remember_me" : true
+	}
 
 Esto nos devolvera dos valores "token_type" y "access_token", con estos valores vamos a armar nuestra "Authorization" para cargarla en los headers en las proximas consultas.
 Deberia quedar algo como 
@@ -63,19 +63,19 @@ Para consultar las categorias de las movies lo hacemos con la siguiente
 <p>JSON</p>
 
     {
-    "popularity" : 59.00,
-    "vote_count" : 950,
-    "video" : false,
-    "poster_path" : "387374d5f22033327cfff1ba1430adfc.jpg",
-    "id" : 8009,
-    "adult" : true,
-    "backdrop_path" : "d07401fa82c073300627b86dfec9108d.jpg",
-    "original_language" : "mh",
-    "original_title" : "Court Reporter",
-    "title" : "Natus et ut deleniti harum.",
-    "vote_average" : 6.40,
-    "overview" : "Provident incidunt eaque est id provident doloribu...",
-    "status" : "now_playing",
-    "release_date" :  "1984-09-02",
-    "genre_ids" : [16,18,27]
+		"popularity" : 59.00,
+		"vote_count" : 950,
+		"video" : false,
+		"poster_path" : "387374d5f22033327cfff1ba1430adfc.jpg",
+		"id" : 8009,
+		"adult" : true,
+		"backdrop_path" : "d07401fa82c073300627b86dfec9108d.jpg",
+		"original_language" : "mh",
+		"original_title" : "Court Reporter",
+		"title" : "Natus et ut deleniti harum.",
+		"vote_average" : 6.40,
+		"overview" : "Provident incidunt eaque est id provident doloribu...",
+		"status" : "now_playing",
+		"release_date" :  "1984-09-02",
+		"genre_ids" : [16,18,27]
     }
