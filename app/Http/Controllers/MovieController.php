@@ -12,8 +12,8 @@ class MovieController extends Controller
 {
     public function index(string $viewState = 'error')
     {
-        $Movie = MovieMethod::factoryMethod($viewState);
-        return $Movie->getMovies($viewState);
+        $movie = MovieMethod::factoryMethod($viewState);
+        return $movie->getMovies($viewState);
     }
 
     public function create(Request $request)
