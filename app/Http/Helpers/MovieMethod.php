@@ -6,6 +6,7 @@ use App\Http\Helpers\ClientMoviesApi;
 Use App\Movie;
 use App\Http\ResponseCode;  
 use Illuminate\Http\Request;
+use App\ViewState;
 
 // Clase creadora declara el método fábrica que devuelve nuevos objetos
 class MovieMethod {
@@ -17,23 +18,17 @@ class MovieMethod {
 
 // Clase Fabrica para crear los objetos correspondientes dependiendo de la categoria
 class MovieFactory {
-    const NOW_PLAYING = "now_playing";
-    const POPULAR = "popular";
-    const UNCOMING = "upcoming";
-    const MY = "my";
-    const CATEGORY = "category";
-
     public function createMethodMovie(string $method): MovieProductInterface {
         switch ($method) {
-            case self::NOW_PLAYING:
+            case ViewState::NOW_PLAYING:
                 return new nowPlayingMovies();
-            case self::POPULAR:
+            case ViewState::POPULAR:
                 return new popularMovies();
-            case self::UNCOMING:
+            case ViewState::UPCOMING:
                 return new upcomingMovies();
-             case self::MY:
+             case ViewState::MY:
                 return new myMovies();
-            case self::CATEGORY:
+            case ViewState::CATEGORY:
                 return new categoryMovies();
             default:
                 return new errorStatusMovies();

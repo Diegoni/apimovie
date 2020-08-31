@@ -9,7 +9,8 @@ use App\Http\ResponseCode;
 
 class UserTest extends TestCase
 {
-    private $urlApi = 'http://localhost:8000/api/auth/';
+    private $urlApi = 'http://localhost:8000/api/auth/login';
+    private $urlProd = 'https://apimovielitebox.herokuapp.com/api/auth/login';
     /**
      * A basic feature test example.
      *
@@ -18,7 +19,7 @@ class UserTest extends TestCase
     public function testLogin()
     {
         //given
-        $urlToTest = $this->urlApi.'login';
+        $urlToTest = (env('APP_URL') == "http://localhost") ? $this->urlApi : $this->urlProd;
         $login = [
             "email" => "prueba@example.com",
             "password" => "123456",

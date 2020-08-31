@@ -2,16 +2,13 @@
 
 namespace App;
 
-use Illuminate\Database\Eloquent\Model;
-
-class ViewState extends Model
-{
-    private $categories = [
-        'now_playing',
-        'upcoming',
-        'popular',
-        'my',
-        'category'
-        'upload',
-    ];
+final class ViewState {
+    const NOW_PLAYING = "now_playing";
+    const UPCOMING = "upcoming";
+    const POPULAR = "popular";
+    const MY = "my";
+    const CATEGORY = "category";
+    const UPLOAD = "upload";
+    const ERROR = "error";
 }
+

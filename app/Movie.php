@@ -24,7 +24,6 @@ class Movie extends Model
         'vote_average',
         'overview',
         'release_date',
-        'status',
     ];
 
     public static function createFromRequest($request)
