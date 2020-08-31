@@ -47,6 +47,31 @@ class Movie extends Model
         return $movieReturn;
     }
 
+    public static function read($movie_id){
+        return DB::table('movies')
+         ->select([
+            'popularity',
+            'vote_count',
+            'video',
+            'poster_path',
+            'movies.id',
+            'adult',
+            'backdrop_path',
+            'original_language',
+            'original_title',
+            'title',
+            'vote_average',
+            'overview',
+            'release_date',
+            DB::raw('GROUP_CONCAT(genres.id) as genre_ids')
+        ])
+        ->leftJoin('movies_genres', 'movies.movie_id', '=', 'movies_genres.movie_id')
+        ->leftJoin('genres', 'movies_genres.genre_id', '=', 'genres.genre_id')
+        ->groupBy('movies.movie_id')
+        ->where('movies.movie_id', $movie_id)
+        ->get();
+    }
+
     public static function get($viewState = null)
     {
         $query = DB::table('movies')
@@ -80,7 +105,6 @@ class Movie extends Model
             $movie->genre_ids = array_map('intval', explode(',', $movie->genre_ids));
         }
         
-
         return $movies;
     }
 }
